@@ -43,7 +43,7 @@ const PhotoStrip = ({ images, name }) => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         className="photo-strip-container"
-        style={{ backgroundColor: bgColor }}
+        style={{ backgroundColor: bgColor, paddingBottom: '2rem' }} 
         ref={photoStripRef}
       >
         {images.map((img, idx) => (
