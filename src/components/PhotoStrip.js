@@ -19,7 +19,7 @@ const PhotoStrip = ({ images, name }) => {
 
   return (
     <div className="photo-strip-wrapper">
-      <h1 className="photo-strip-title">{name}'s Photo Strip</h1>
+      <h1 className="photo-strip-title">{name}'s Puto Strip</h1>
       <div className="controls">
         <label>
           Background Color:
