@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import LandingPage from './components/LandingPage';
+import NamePrompt from './components/NamePrompt';
+import PhotoBooth from './components/PhotoBooth';
+import PhotoStrip from './components/PhotoStrip';
+import './index.css';
 
 function App() {
+  const [step, setStep] = useState(0);
+  const [name, setName] = useState('');
+  const [images, setImages] = useState([]);
+
+  const handleStart = () => setStep(1);
+  const handleNameSubmit = (enteredName) => {
+    setName(enteredName);
+    setStep(2);
+  };
+  const handleCaptureComplete = (captured) => {
+    setImages(captured);
+    setStep(3);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {step === 0 && <LandingPage onStart={handleStart} />}
+      {step === 1 && <NamePrompt onSubmitName={handleNameSubmit} />}
+      {step === 2 && <PhotoBooth name={name} onComplete={handleCaptureComplete} />}
+      {step === 3 && <PhotoStrip images={images} name={name} />}
+    </>
   );
 }
 
